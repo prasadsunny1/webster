@@ -18,7 +18,7 @@ class DictionaryBloc extends Bloc<DictionaryEvent, DictionaryState> {
   Stream<DictionaryState> mapEventToState(DictionaryEvent event) async* {
     if (event is SearchMeaningEvent) {
       //Fire webrequest to search and return a state depending on it
-
+      yield Loading();
       DictionaryResult result =
           await DictionaryRepository().fetchDictionaryMeaningOf(event.term);
 

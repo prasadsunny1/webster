@@ -19,6 +19,7 @@ class Home extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 SearchBox(),
+                if (state is Loading) CircularProgressIndicator(),
                 if (state is DictonarySuggestedTerms)
                   ...state.suggestions.map((s) => Text(s)),
                 if (state is DictonaryTermResult) TermInfoWidget(state: state),

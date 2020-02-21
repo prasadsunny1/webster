@@ -16,3 +16,7 @@ class DictonaryTermResult extends DictionaryState {
 
   DictonaryTermResult(this.result);
 }
+
+class Loading extends DictionaryState {
+  Loading();
+}
