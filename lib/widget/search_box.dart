@@ -16,11 +16,22 @@ class _SearchBoxState extends State<SearchBox> {
   Widget build(BuildContext context) {
     bloc = BlocProvider.of<DictionaryBloc>(context);
     return Container(
-      child: TextField(
-        controller: textEditingController,
-        onChanged: searchTextChanged,
-        autocorrect: true,
-        maxLines: 1,
+      child: Material(
+        elevation: 4,
+        child: TextField(
+          controller: textEditingController,
+          onChanged: searchTextChanged,
+          autocorrect: true,
+          maxLines: 1,
+          style: TextStyle(
+            fontSize: 24,
+            color: Colors.grey.shade700,
+          ),
+          decoration: InputDecoration(
+            prefixIcon: Icon(Icons.search),
+            border: InputBorder.none,
+          ),
+        ),
       ),
     );
   }

@@ -20,5 +20,5 @@ final Serializers serializers = (_$serializers.toBuilder()
 T deserialize<T>(dynamic value) =>
     serializers.deserializeWith<T>(serializers.serializerForType(T), value);
 
-BuiltList<T> deserializeListOf<T>(dynamic value) =>
-    BuiltList<T>.from(value.map((deserialize(value))).toList(growable: false));
+BuiltList<T> deserializeListOf<T>(dynamic value) => BuiltList.from(
+    value.map((value) => deserialize<T>(value)).toList(growable: false));

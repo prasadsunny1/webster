@@ -37,6 +37,12 @@ class _$WebsterDictionaryResponseSerializer
             specifiedType:
                 const FullType(BuiltList, const [const FullType(String)])));
     }
+    if (object.type != null) {
+      result
+        ..add('fl')
+        ..add(serializers.serialize(object.type,
+            specifiedType: const FullType(String)));
+    }
     return result;
   }
 
@@ -62,6 +68,10 @@ class _$WebsterDictionaryResponseSerializer
                       const FullType(BuiltList, const [const FullType(String)]))
               as BuiltList<Object>);
           break;
+        case 'fl':
+          result.type = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
       }
     }
 
@@ -74,12 +84,15 @@ class _$WebsterDictionaryResponse extends WebsterDictionaryResponse {
   final Meta meta;
   @override
   final BuiltList<String> shortdef;
+  @override
+  final String type;
 
   factory _$WebsterDictionaryResponse(
           [void Function(WebsterDictionaryResponseBuilder) updates]) =>
       (new WebsterDictionaryResponseBuilder()..update(updates)).build();
 
-  _$WebsterDictionaryResponse._({this.meta, this.shortdef}) : super._();
+  _$WebsterDictionaryResponse._({this.meta, this.shortdef, this.type})
+      : super._();
 
   @override
   WebsterDictionaryResponse rebuild(
@@ -95,19 +108,22 @@ class _$WebsterDictionaryResponse extends WebsterDictionaryResponse {
     if (identical(other, this)) return true;
     return other is WebsterDictionaryResponse &&
         meta == other.meta &&
-        shortdef == other.shortdef;
+        shortdef == other.shortdef &&
+        type == other.type;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, meta.hashCode), shortdef.hashCode));
+    return $jf(
+        $jc($jc($jc(0, meta.hashCode), shortdef.hashCode), type.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('WebsterDictionaryResponse')
           ..add('meta', meta)
-          ..add('shortdef', shortdef))
+          ..add('shortdef', shortdef)
+          ..add('type', type))
         .toString();
   }
 }
@@ -126,12 +142,17 @@ class WebsterDictionaryResponseBuilder
       _$this._shortdef ??= new ListBuilder<String>();
   set shortdef(ListBuilder<String> shortdef) => _$this._shortdef = shortdef;
 
+  String _type;
+  String get type => _$this._type;
+  set type(String type) => _$this._type = type;
+
   WebsterDictionaryResponseBuilder();
 
   WebsterDictionaryResponseBuilder get _$this {
     if (_$v != null) {
       _meta = _$v.meta?.toBuilder();
       _shortdef = _$v.shortdef?.toBuilder();
+      _type = _$v.type;
       _$v = null;
     }
     return this;
@@ -156,7 +177,7 @@ class WebsterDictionaryResponseBuilder
     try {
       _$result = _$v ??
           new _$WebsterDictionaryResponse._(
-              meta: _meta?.build(), shortdef: _shortdef?.build());
+              meta: _meta?.build(), shortdef: _shortdef?.build(), type: type);
     } catch (_) {
       String _$failedField;
       try {

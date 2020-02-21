@@ -28,6 +28,10 @@ abstract class WebsterDictionaryResponse
   @BuiltValueField(wireName: 'shortdef')
   BuiltList<String> get shortdef;
 
+  @nullable
+  @BuiltValueField(wireName: 'fl')
+  String get type;
+
   String toJson() {
     return json.encode(
         serializers.serializeWith(WebsterDictionaryResponse.serializer, this));
