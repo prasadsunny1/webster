@@ -6,13 +6,13 @@ abstract class DictionaryState {}
 class DictionaryInitial extends DictionaryState {}
 
 class DictonarySuggestedTerms extends DictionaryState {
-  final List<String> suggestions;
+  final BuiltList<String> suggestions;
 
   DictonarySuggestedTerms(this.suggestions);
 }
 
 class DictonaryTermResult extends DictionaryState {
-  final WebsterDictionaryResponse result;
+  final BuiltList<WebsterDictionaryResponse> result;
 
   DictonaryTermResult(this.result);
 }

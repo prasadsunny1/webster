@@ -1,7 +1,9 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:built_collection/built_collection.dart';
 import 'package:meta/meta.dart';
+
 import '../Repository/dictionary_repository.dart';
 import '../models/webster_dictionary_response.dart';
 

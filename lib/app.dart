@@ -7,8 +7,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_)=> DictionaryBloc(),
-          child: MaterialApp(
+      create: (_) => DictionaryBloc(),
+      child: MaterialApp(
         home: Home(),
         debugShowCheckedModeBanner: false,
       ),

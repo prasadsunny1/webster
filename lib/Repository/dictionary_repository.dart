@@ -1,7 +1,11 @@
 import 'dart:convert';
 
+import 'package:built_collection/built_collection.dart' show BuiltList;
+import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import '../models/serializers.dart';
+
 import '../models/webster_dictionary_response.dart';
 
 class DictionaryRepository {
@@ -14,22 +18,34 @@ class DictionaryRepository {
     if (response.statusCode == 200) {
       print('runtime type of response ${response.data.runtimeType}');
       print('data is ${response.data}');
-      if (response.data is List<dynamic>) {
+
+      BuiltList<WebsterDictionaryResponse> builtDictList;
+      BuiltList<String> builtSuggestionList;
+      try {
+        builtDictList =
+            deserializeListOf<WebsterDictionaryResponse>(response.data);
+      } catch (e) {
+        print(e);
+      }
+      try {
+        builtSuggestionList = BuiltList<String>.from(response.data);
+      } catch (e) {
+        print(e);
+      }
+      print(builtDictList);
+      print(builtSuggestionList);
+
+      if (builtSuggestionList != null) {
         return DictionaryResult(
           hasError: false,
           resultType: DictionaryResultType.searchSuggestions,
-          suggestedTerms: List<String>.from(response.data),
+          suggestedTerms: builtSuggestionList,
         );
-      } else if (response.data is Map<String, dynamic>) {
-        //if result is termResult
-        var resultMap = json.decode(response.data);
-        WebsterDictionaryResponse resultModel =
-            WebsterDictionaryResponse.fromJson(resultMap);
-
+      } else if (builtDictList != null) {
         return DictionaryResult(
           hasError: false,
           resultType: DictionaryResultType.termResult,
-          termResult: resultModel,
+          termResult: builtDictList,
         );
       }
       return DictionaryResult(
@@ -46,8 +62,8 @@ class DictionaryResult {
   final bool hasError;
   final String errorMessage;
   final DictionaryResultType resultType;
-  final List<String> suggestedTerms;
-  final WebsterDictionaryResponse termResult;
+  final BuiltList<String> suggestedTerms;
+  final BuiltList<WebsterDictionaryResponse> termResult;
 
   DictionaryResult({
     @required this.hasError,
