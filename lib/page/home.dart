@@ -19,9 +19,21 @@ class Home extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 SearchBox(),
+                if (state is DictionaryInitial)
+                  Center(
+                    child: Text("Please search something"),
+                  ),
                 if (state is Loading) CircularProgressIndicator(),
                 if (state is DictonarySuggestedTerms)
-                  ...state.suggestions.map((s) => Text(s)),
+                  ...state.suggestions.map(
+                    (s) => ListTile(
+                      title: Text(s),
+                      onTap: () {
+                        var bloc = BlocProvider.of<DictionaryBloc>(context);
+                        bloc.add(SearchMeaningEvent(s));
+                      },
+                    ),
+                  ),
                 if (state is DictonaryTermResult) TermInfoWidget(state: state),
               ],
             ),
