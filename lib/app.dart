@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'bloc/dictionary_bloc.dart';
-import 'pages/home.dart';
+import 'page/home.dart';
 
 class MyApp extends StatelessWidget {
   @override

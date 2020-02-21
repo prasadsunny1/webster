@@ -4,8 +4,8 @@ import 'package:bloc/bloc.dart';
 import 'package:built_collection/built_collection.dart';
 import 'package:meta/meta.dart';
 
-import '../Repository/dictionary_repository.dart';
-import '../models/webster_dictionary_response.dart';
+import '../entity/webster_dictionary_response.dart';
+import '../repository/dictionary_repository.dart';
 
 part 'dictionary_event.dart';
 part 'dictionary_state.dart';
@@ -29,7 +29,7 @@ class DictionaryBloc extends Bloc<DictionaryEvent, DictionaryState> {
           yield DictonaryTermResult(result.termResult);
           break;
         case DictionaryResultType.searchSuggestions:
-          yield DictonarySuggestedTerms(result.suggestedTerms);
+          yield DictonarySuggestedTerms.Dictionary(result.suggestedTerms);
           break;
       }
     } else {

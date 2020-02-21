@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:just_debounce_it/just_debounce_it.dart';
-import 'package:webster/bloc/dictionary_bloc.dart';
+
+import '../bloc/dictionary_bloc.dart';
 
 class SearchBox extends StatefulWidget {
   @override

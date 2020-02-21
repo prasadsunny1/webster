@@ -1,12 +1,9 @@
-import 'dart:convert';
-
 import 'package:built_collection/built_collection.dart' show BuiltList;
-import 'package:built_value/serializer.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import '../models/serializers.dart';
 
-import '../models/webster_dictionary_response.dart';
+import '../entity/webster_dictionary_response.dart';
+import '../model/serializers.dart';
 
 class DictionaryRepository {
   Future<DictionaryResult> fetchDictionaryMeaningOf(String term) async {
@@ -27,6 +24,7 @@ class DictionaryRepository {
       } catch (e) {
         print(e);
       }
+
       try {
         builtSuggestionList = BuiltList<String>.from(response.data);
       } catch (e) {

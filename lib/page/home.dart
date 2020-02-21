@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:webster/bloc/dictionary_bloc.dart';
-import 'package:webster/widgets/search_box.dart';
+
+import '../bloc/dictionary_bloc.dart';
+import '../widget/search_box.dart';
 
 class Home extends StatelessWidget {
   @override

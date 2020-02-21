@@ -4,18 +4,16 @@ import 'dart:convert';
 
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
-import 'package:built_value/json_object.dart';
 import 'package:built_value/serializer.dart';
 
+import '../model/serializers.dart';
 import 'meta.dart';
-import 'serializers.dart';
 
 part 'webster_dictionary_response.g.dart';
 
 abstract class WebsterDictionaryResponse
     implements
         Built<WebsterDictionaryResponse, WebsterDictionaryResponseBuilder> {
-
   WebsterDictionaryResponse._();
 
   factory WebsterDictionaryResponse(
