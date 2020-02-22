@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'bloc/dictionary_bloc.dart';
-import 'page/home.dart';
+import 'page/home_page.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
     return BlocProvider(
       create: (_) => DictionaryBloc(),
       child: MaterialApp(
-        home: Home(),
+        home: HomePage(),
         debugShowCheckedModeBanner: false,
       ),
     );

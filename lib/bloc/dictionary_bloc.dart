@@ -29,7 +29,7 @@ class DictionaryBloc extends Bloc<DictionaryEvent, DictionaryState> {
           yield DictonaryTermResult(result.termResult);
           break;
         case DictionaryResultType.searchSuggestions:
-          yield DictonarySuggestedTerms.Dictionary(result.suggestedTerms);
+          yield DictonarySuggestedTerms(result.suggestedTerms);
           break;
       }
     } else {

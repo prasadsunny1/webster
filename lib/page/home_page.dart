@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:webster/widget/term_info_widget.dart';
 
 import '../bloc/dictionary_bloc.dart';
 import '../widget/search_box.dart';
+import '../widget/term_info_widget.dart';
 
-class Home extends StatelessWidget {
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

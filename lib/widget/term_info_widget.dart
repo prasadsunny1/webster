@@ -22,15 +22,15 @@ class TermInfoWidget extends StatelessWidget {
           children: <Widget>[
             Text(
               firstItem.meta.stems.first ?? "",
-              style: Theme.of(context).textTheme.display1,
+              style: Theme.of(context).textTheme.headline4,
             ),
             Text(
               firstItem.type ?? "type",
-              style: Theme.of(context).textTheme.title,
+              style: Theme.of(context).textTheme.headline6,
             ),
             Text(
               firstItem.shortdef.first,
-              style: Theme.of(context).textTheme.subhead,
+              style: Theme.of(context).textTheme.subtitle1,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,

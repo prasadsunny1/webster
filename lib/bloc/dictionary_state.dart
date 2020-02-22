@@ -8,7 +8,7 @@ class DictionaryInitial extends DictionaryState {}
 class DictonarySuggestedTerms extends DictionaryState {
   final BuiltList<String> suggestions;
 
-  DictonarySuggestedTerms.Dictionary(this.suggestions);
+  DictonarySuggestedTerms(this.suggestions);
 }
 
 class DictonaryTermResult extends DictionaryState {
